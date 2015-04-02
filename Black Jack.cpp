@@ -6,7 +6,7 @@ using namespace std;
 
 double poker[52];
 double SumPoint;
-char flower[4][10]={"Spade","Heart","Club","Diomand"};
+char flower[4][10]={"Spade","Heart","Club","Diomand"};//The flowers of pokers
 int counter;
 
 void wash(){
@@ -18,9 +18,10 @@ void wash(){
 		poker[i+29]=i;	}
 	for(i=40;i<52;i++)
 	poker[i]=0.5; } 
+	//washing pokers by reassigning the value of the array.
 	
 	
- void display(int n) {string out;
+ void display(int n) {
  	char ch;
 	if (n<40){if(n%10==9){
 	 	cout<<flower[n/10]<<"10"<<endl;}
@@ -46,7 +47,7 @@ void wash(){
 	 while (poker[n]==12);
  	display(n);
  	control+=poker[n];
- 	poker[n]=12;
+ 	poker[n]=12;//make the cards sent by random are different.
  	return control;
 	  } 
 	  
@@ -71,7 +72,7 @@ void wash(){
 		cout<<"You have "<<SumPoint<<" point"<<endl;	} 
 		else{cout<<"Now your total point:"<<SumPoint<<endl;
 			if(SumPoint>21)
-			{cout<<"Boom!You have more than 21 points.Lose!"<< endl;boom1=2;}
+			{cout<<"Boom!You have more than 21 points.Lose!"<< endl;boom1=2;}//if boom==2,then the computer needn't to play.
 			break; } 
 		if (SumPoint>21)
 		{cout<<"Boom!You have more than 21 points.Lose!"<<endl;
@@ -102,7 +103,7 @@ void wash(){
 			 cout<<endl;
 			 ComCot=2;
 			 char flag2;
-			 while(true){	cout<<endl<<"Will I take one more card?"<<endl;
+			 while(true){	cout<<endl<<"Will I take one more card?"<<endl;//whether take another one.
 			 	if (ComSum<SumPoint){
 			 		cout<<"Yes,Of course!"<<endl;
 			 		flag2='Y';ComCot++; }
@@ -117,7 +118,7 @@ void wash(){
 	     		else{if (SumPoint>ComSum)cout<<"You win!"<<endl;
 			 		else if (SumPoint<ComSum) cout<<"I win!You lose!"<<endl;
 			 		else {
-			 			if(counter>ComCot)cout<<"You win!"<<endl;
+			 			if(counter>ComCot)cout<<"You win!"<<endl;//judege the winner.
 			 			if(counter<ComCot)cout<<"I win!You lose!"<<endl;
 			 			else cout<<"Oh,we are in a tie!"<<endl;  }
 				  }		 
