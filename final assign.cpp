@@ -91,7 +91,7 @@ template <class T>
 	if (real_size>=total_size) double_space();
 		element[real_size] = item;
 		++real_size;
-}
+}//add item to the list
 template <class T>
 T  MyList<T>:: pop(){
 	 try{
@@ -106,7 +106,7 @@ T  MyList<T>:: pop(){
 		cout << "The list you pop is empty!" << endl; 
 	}
 }
-
+//pop the top element out of list
 
 template <class T>
 void MyList<T>::insert(int index, const T &item){
@@ -127,20 +127,19 @@ void MyList<T>::insert(int index, const T &item){
 		cout << "The index you insert is nonexist!" << endl;
 	}
 }
-
+//insert an item at assigned index
 
 template <class T>
 void  MyList<T>::clean(){
 	real_size=0;
 	delete[] element;
 	element = new T [0]; }
-	
+	//clean up the whole list
 	
 	
 template <class T>
 int MyList<T>:: get_size(){
 	return real_size;}
-	
 	
 template <class T>
 void MyList<T>::erase(int start, int end){
@@ -157,6 +156,7 @@ void MyList<T>::erase(int start, int end){
 		cout << "The range you erase is wrong£¡" << endl;
 	}
 }
+	  
 	  
 	  
 template <class T>
@@ -190,6 +190,7 @@ MyList<T>MyList<T>::get_item(int start, int end){
 		cout << "Error! In function get_item: The range which you want to get is invalid!" << endl;
 	}
 }
+//get item from index"start" to index "end"
 
 
 template <class T>
@@ -208,6 +209,7 @@ void MyList<T>::remove(const T &item){
 		 break;}
 }
 }
+//remove the first element that equals to "item"
 
 
 	 
@@ -220,7 +222,7 @@ MyList<T>&MyList<T>::operator = (const MyList &l){
 	element = new T [total_size]; 
 	for (int i=0; i<real_size; ++i) element[i] = l.element[i];
 	return *this; 
-}
+}//override the operator =
 
 
 template <class T>
@@ -229,7 +231,7 @@ template <class T>
 		element[real_size] = item;
 		++real_size;
 		return *this;
-	}
+	}//override the operator +=
 
 
 
@@ -242,8 +244,7 @@ template <class T>
 			element[i] = l.element[i-addlen];
 		}
 		return *this;}
-
-
+//override the operator += for another list
 
 template <class T>
      T &MyList<T>::operator [](int index){
@@ -256,7 +257,7 @@ template <class T>
 	catch(int err){
 		cout << "In operator [] you take a invalid index!" << endl;
 	}
-}
+}//define the operator []
 
 template<class T>
 ostream & operator<<(ostream &os, const MyList<T> &obj){
@@ -268,7 +269,7 @@ ostream & operator<<(ostream &os, const MyList<T> &obj){
 	}
 	cout << ']' ;
 	return os;
-}
+}//override the operator <<
 
 
 template<class T>MyList<T> operator + (const MyList<T> &l1, const MyList<T> &l2){
@@ -276,7 +277,7 @@ template<class T>MyList<T> operator + (const MyList<T> &l1, const MyList<T> &l2)
 	for (int i=0;i<l2.real_size;++i)
 		tmp.push(l2.element[i]);
 	return tmp;}
-
+//override the operator + for another list
 
 
 template<class T> 
@@ -286,7 +287,7 @@ MyList<T> operator + (const MyList<T> &l1, const T &item){
 	return tmp;
 }
 	
-	
+	//override the operator +
 	
 template <class T>
 void quicksort(T*element ,int left,int right) 
@@ -315,6 +316,7 @@ void quicksort(T*element ,int left,int right)
     quicksort(element,left,i-1);
     quicksort(element,i+1,right);
 } 
+//quicksort for the "sort" function
 
 template <class T> 
 void  MyList<T>::sort(bool less=true){
@@ -323,14 +325,13 @@ void  MyList<T>::sort(bool less=true){
 	   } 
    }	
    
-   
 template <class T>
 void  MyList<T>::reverse(){
 	T *tmp;
 	tmp = new T [real_size];
 	for (int i=real_size-1; i>=0; --i) tmp[real_size-1-i] = element[i];
 	element= tmp;}
-	
+	//reverse the order
 
 
 
@@ -346,7 +347,7 @@ int main(){
 	a += 12; // a = [15, 4, 2, 1, 0, 12]
 	for (i=0; i<a.get_size(); ++i)
 		cout<<a[i]<<endl;
-    b = a.get_item(4, -3); // b = [] *Èôstart > end£¬·µ»Ø¿ÕÊý×é
+    b = a.get_item(4, -3); // b = [] *if start>end, return a empty array
 	b = a.get_item(3, -1); // b = [1, 0, 12] 
 	a += b; // a = [15, 4, 2, 1, 0, 12, 1, 0, 12]
 	for (i=0; i<a.get_size(); ++i)
